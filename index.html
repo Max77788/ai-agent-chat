@@ -55,16 +55,17 @@
 
       const userName = capitalizeName(getUrlParam("name")) || "";
       const userId = getUrlParam("uid") || "";
+      const industry = getUrlParam("industry") || "fitness";
 
       import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
 
       const initialGreeting = userName
-        ? `Hello, ${userName}! How can I help you today in your fitness journey💪?`
-        : "Hello! How can I help you today in your fitness journey💪?";
+        ? `Hello, ${userName}! How can I help you today in your ${industry} journey💪?`
+        : `Hello! How can I help you today in your ${industry} journey💪?`;
 
       createChat({
         webhookUrl:
-          "https://stoneinvest.app.n8n.cloud/webhook/24d97590-c0c7-453c-b56e-3191e2560fad/chat",
+          "https://n8n.mom-ai-agency.site/webhook/24d97590-c0c7-453c-b56e-3191e2560fad/chat",
         target: "#my-chat",
         mode: "fullscreen",
         showWelcomeScreen: false,
@@ -81,6 +82,7 @@
         metadata: {
           name: userName,
           uid: userId,
+          industry: industry
         },
         // Ensure you’ve other settings as needed
       });
